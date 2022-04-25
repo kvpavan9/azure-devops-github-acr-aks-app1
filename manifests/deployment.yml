@@ -1,19 +1,19 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: app1nginxaks 
+  name: {{#toAlphaNumericString imageRepository 50}}{{/toAlphaNumericString}} 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app1nginxaks
+      app: {{#toAlphaNumericString imageRepository 50}}{{/toAlphaNumericString}}
   template:
     metadata:
       labels:
-        app: app1nginxaks 
+        app: {{#toAlphaNumericString imageRepository 50}}{{/toAlphaNumericString}} 
     spec:
       containers:
-        - name: app1nginxaks 
-          image: aksdevopsacr.azurecr.io/app1nginxaks
+        - name: {{#toAlphaNumericString imageRepository 50}}{{/toAlphaNumericString}} 
+          image: {{ containerRegistryConnection.Authorization.Parameters.loginServer }}/{{#toAlphaNumericString imageRepository 50}}{{/toAlphaNumericString}}
           ports:
-          - containerPort: 80
+          - containerPort: {{ servicePort }}
