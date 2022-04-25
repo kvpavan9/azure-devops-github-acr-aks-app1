@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: app1nginxaks 
-          image: $(containerRegistry)/$(imageRepository):$(tag)
+          image: azurepocp.azurecr.io/kvpavanazuredevopsgithubacraksapp:$(Build.BuildId)
           ports:
           - containerPort: 80
